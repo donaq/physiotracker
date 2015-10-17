@@ -56,6 +56,7 @@ function setupexercise(parts){
 $(document).ready(function(){
     soundelement = document.getElementById("nextsound");
     $("#calfquad").click(calfquad);
+    $("#play").click(function(){soundelement.play()});
     $("#hamstring").click(hamstring);
     $("#next").click(exercise);
 });
