@@ -1,5 +1,6 @@
 var exercises = []
 var duration = 0;
+var soundelement = null;
 function next(){
     $("#rep").hide();
     $("#seconds").hide();
@@ -23,6 +24,7 @@ function countdown(){
     if(duration==0){
         $("#seconds").html("");
         next();
+        soundelement.play();
         return;
     }
     $("#seconds").html(duration);
@@ -52,6 +54,7 @@ function setupexercise(parts){
     $("seconds").hide();
 }
 $(document).ready(function(){
+    soundelement = document.getElementById("nextsound");
     $("#calfquad").click(calfquad);
     $("#hamstring").click(hamstring);
     $("#next").click(exercise);
