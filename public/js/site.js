@@ -1,5 +1,32 @@
-var duration = 3;
 var exercises = []
+var duration = 0;
+function next(){
+    $("#rep").hide();
+    $("#seconds").hide();
+    $("#next").show();
+}
+function choose(){
+    $("#exercise").hide();
+    $("#choose").show();
+}
+function exercise(){
+    if(exercises.length==0)
+        return choose();
+    duration = 3;
+    $("#next").hide();
+    $("#rep").show();
+    $("#rep").html(exercises.pop());
+    countdown();
+}
+function countdown(){
+    if(duration==0){
+        $("#seconds").html("");
+        exercise();
+    }
+    $("#seconds").html(duration);
+    duration = duration - 1;
+    setTimeout(countdown);
+}
 function calfquad(){
     $("#choose").hide();
     $("#exercise").show();
@@ -17,4 +44,5 @@ function calfquad(){
 }
 $(document).ready(function(){
     $("#calfquad").click(calfquad);
+    $("#next").click(next);
 });
