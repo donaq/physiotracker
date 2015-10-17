@@ -21,7 +21,7 @@ function exercise(){
 function countdown(){
     if(duration==0){
         $("#seconds").html("");
-        exercise();
+        next();
     }
     $("#seconds").html(duration);
     duration = duration - 1;
@@ -40,9 +40,11 @@ function calfquad(){
                 exercises.push([legs[k],parts[j],"rep",reps[i]].join(" "));
             }
     console.log(exercises);
-    // start timing
+    $("#next").show();
+    $("rep").hide();
+    $("seconds").hide();
 }
 $(document).ready(function(){
     $("#calfquad").click(calfquad);
-    $("#next").click(next);
+    $("#next").click(exercise);
 });
