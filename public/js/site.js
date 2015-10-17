@@ -2,8 +2,9 @@ var exercises = []
 var duration = 0;
 var soundelement = null;
 function next(){
-    $("#rep").hide();
     $("#seconds").hide();
+    if(exercises.length==0) $("#rep").html("");
+    else $("#rep").html(exercises[exercises.length-1]);
     $("#next").show();
 }
 function choose(){
@@ -15,7 +16,6 @@ function exercise(){
         return choose();
     duration = 30;
     $("#next").hide();
-    $("#rep").show();
     $("#seconds").show();
     $("#rep").html(exercises.pop());
     countdown();
@@ -49,9 +49,7 @@ function setupexercise(parts){
                 exercises.push([legs[k],parts[j],"rep",reps[i]].join(" "));
             }
     console.log(exercises);
-    $("#next").show();
-    $("rep").hide();
-    $("seconds").hide();
+    next();
 }
 $(document).ready(function(){
     soundelement = document.getElementById("nextsound");
