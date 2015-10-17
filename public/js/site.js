@@ -12,7 +12,7 @@ function choose(){
 function exercise(){
     if(exercises.length==0)
         return choose();
-    duration = 3;
+    duration = 30;
     $("#next").hide();
     $("#rep").show();
     $("#seconds").show();
