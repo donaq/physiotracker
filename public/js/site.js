@@ -15,6 +15,7 @@ function exercise(){
     duration = 3;
     $("#next").hide();
     $("#rep").show();
+    $("#seconds").show();
     $("#rep").html(exercises.pop());
     countdown();
 }
@@ -22,18 +23,24 @@ function countdown(){
     if(duration==0){
         $("#seconds").html("");
         next();
+        return;
     }
     $("#seconds").html(duration);
     duration = duration - 1;
-    setTimeout(countdown);
+    setTimeout(countdown, 1000);
 }
 function calfquad(){
+    setupexercise(["Quad", "Calf"]);
+}
+function hamstring(){
+    setupexercise(["Hamstring"]);
+}
+function setupexercise(parts){
     $("#choose").hide();
     $("#exercise").show();
     exercises = [];
     var legs = ["Left", "Right"];
     var reps = "10 9 8 7 6 5 4 3 2 1".split(" ");
-    var parts = ["Quad", "Calf"];
     for(var i=0;i<reps.length;i++)
         for(var j=0;j<parts.length;j++)
             for(var k=0;k<legs.length;k++){
@@ -46,5 +53,6 @@ function calfquad(){
 }
 $(document).ready(function(){
     $("#calfquad").click(calfquad);
+    $("#hamstring").click(hamstring);
     $("#next").click(exercise);
 });
